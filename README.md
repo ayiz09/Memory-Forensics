@@ -47,3 +47,6 @@ python39 vol.py -f <mem_file> windows.registry.printkey --offset=0xffffcd0fd5cee
 python39 vol.py -f <mem_file> windows.registry.printkey --offset=0xffffcd0fd5cee000 --key="Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{5FE8D604-2E8E-41EC-A557-5A88F300A5D4}
 ```
 id-key{5FE8D604-2E8E-41EC-A557-5A88F300A5D4} --> it can be many so yo need to loop to find one by one.
+
+## Windows Event Log
+
