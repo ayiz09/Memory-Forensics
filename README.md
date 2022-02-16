@@ -49,4 +49,25 @@ python39 vol.py -f <mem_file> windows.registry.printkey --offset=0xffffcd0fd5cee
 id-key{5FE8D604-2E8E-41EC-A557-5A88F300A5D4} --> it can be many so yo need to loop to find one by one.
 
 ## Windows Event Log
+You can retrieve some of windows log from memory .  
 
+1. Find procees ID for wevtsvc.dll from windows.dlllist.DllList
+```
+python3.9 vol.py -f <mem_file>  windows.dlllist.DllList | grep "wevtsvc.dll"
+```
+
+Console Outcome:
+```
+1312 resssvchost.exe     0x7ffba0900000an0x1d5000ished   wevtsvc.dll     c:\windows\system32\wevtsvc.dll 2021-10-11 06:28:18.000000  Disabled
+```
+
+2. Dump all file from the process ID in step 1. During this step , there is some error when dumping the file cause of missing dependencies. Incase encounter same error you need to run this:
+```
+python3.9 -m pip install capstone
+```
+
+Dump file:
+```
+python3.9 vol.py -f <mem_file> -o <dump_folder>  windows.dumpfiles.DumpFiles --pid 1312
+```
+You will get all event log file with extension ".vacb" and ".dat" . Can use event log parser to convert to csv like EvtxECmd from [Eric Zimmerman Tools](https://ericzimmerman.github.io/#!index.md)    
