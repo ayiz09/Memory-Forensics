@@ -1,4 +1,4 @@
-# Memory-Forensics Using Volatility 3
+# Memory-Forensics Using Volatility 3 (WinEvent Logs)
 This is some of ways to retrieve evidence through memory forensics. 
 
 ## Task Scheduler
